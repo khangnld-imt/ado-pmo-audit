@@ -1,0 +1,114 @@
+[
+ {
+  "run_id": "2026-10-27_1024",
+  "date": "2026-10-27",
+  "time": "10:24",
+  "sprint": "Sprint 7",
+  "score": 65.0,
+  "counts": {
+   "fail": 8,
+   "warn": 1,
+   "review": 3,
+   "pending": 3,
+   "pass": 15
+  },
+  "items": 126,
+  "open": 96
+ },
+ {
+  "run_id": "2026-10-27_1027",
+  "date": "2026-10-27",
+  "time": "10:27",
+  "sprint": "Sprint 7",
+  "score": 65.0,
+  "counts": {
+   "fail": 8,
+   "warn": 1,
+   "review": 3,
+   "pending": 3,
+   "pass": 15
+  },
+  "items": 126,
+  "open": 96
+ },
+ {
+  "run_id": "2026-10-27_1034",
+  "date": "2026-10-27",
+  "time": "10:34",
+  "sprint": "Sprint 7",
+  "score": 65.0,
+  "counts": {
+   "fail": 8,
+   "warn": 1,
+   "review": 3,
+   "pending": 3,
+   "pass": 15
+  },
+  "items": 126,
+  "open": 96
+ },
+ {
+  "run_id": "2026-10-27_1052",
+  "date": "2026-10-27",
+  "time": "10:52",
+  "sprint": "Sprint 7",
+  "score": 65.0,
+  "counts": {
+   "fail": 8,
+   "warn": 1,
+   "review": 3,
+   "pending": 3,
+   "pass": 15
+  },
+  "items": 127,
+  "open": 96
+ },
+ {
+  "run_id": "2026-10-27_1123",
+  "date": "2026-10-27",
+  "time": "11:23",
+  "sprint": "Sprint 7",
+  "score": 65.0,
+  "counts": {
+   "fail": 8,
+   "warn": 1,
+   "review": 3,
+   "pending": 3,
+   "pass": 15
+  },
+  "items": 127,
+  "open": 95
+ },
+ {
+  "run_id": "2026-10-27_1127",
+  "date": "2026-10-27",
+  "time": "11:27",
+  "sprint": "Sprint 7",
+  "score": 54.0,
+  "counts": {
+   "fail": 10,
+   "warn": 2,
+   "review": 3,
+   "pending": 3,
+   "pass": 12
+  },
+  "items": 128,
+  "open": 95
+ },
+ {
+  "run_id": "2026-10-27_1138",
+  "date": "2026-10-27",
+  "time": "11:38",
+  "sprint": "Sprint 7",
+  "score": 58.0,
+  "counts": {
+   "fail": 9,
+   "warn": 2,
+   "review": 3,
+   "pending": 3,
+   "pass": 13
+  },
+  "items": 129,
+  "open": 96
+ }
+]
