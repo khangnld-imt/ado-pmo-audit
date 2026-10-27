@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>PMO Audit · Sprint 7 · 2026-10-27</title>
+<style>
+:root{--ink:#16202c;--mut:#5b6776;--line:#e3e8ef;--bg:#f5f7fa;--card:#fff;--blue:#1a73e8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.55 "Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 64px}
+header.top{background:linear-gradient(135deg,#101c2b 0%,#1d3450 55%,#26456b 100%);color:#fff;
+ padding:30px 0 26px;margin-bottom:26px}
+header.top .wrap{display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-bottom:0}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8fb4dd;margin-bottom:6px}
+h1{margin:0 0 8px;font-size:30px;line-height:1.15;font-weight:700;letter-spacing:-.01em}
+.sub{color:#c3d4e6;font-size:13.5px}
+.sub b{color:#fff;font-weight:600}
+.sub code{background:rgba(255,255,255,.12);padding:2px 6px;border-radius:4px;font-size:12px}
+.right{display:flex;align-items:center;gap:18px}
+.trend{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 10px}
+.trend span{display:block;font-size:10px;letter-spacing:.1em;color:#9dbcd9;text-transform:uppercase;margin-bottom:2px}
+.spark{width:190px;height:44px;display:block}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:0 0 18px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi b{display:block;font-size:24px;line-height:1.1} .kpi span{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12.5px;color:var(--ink)}
+.chip span{display:inline-block;min-width:16px;text-align:center;background:#fdecec;color:#c62828;border-radius:999px;font-size:11px;margin-left:4px;padding:0 4px}
+.chip span:empty{display:none}
+section{margin-bottom:30px;scroll-margin-top:12px}
+.sech{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:7px;margin-bottom:14px}
+.sech h2{margin:0;font-size:16px;letter-spacing:.01em;text-transform:uppercase}
+.sectag{font-size:12px;color:var(--mut)}
+.ctl{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);
+ border-radius:9px;padding:14px 16px;margin-bottom:10px}
+.ctl.pass{border-left-color:#0f9d58} .ctl.warn{border-left-color:#b26a00}
+.ctl.fail{border-left-color:#c62828} .ctl.review{border-left-color:#1a73e8} .ctl.pending{border-left-color:#9aa4b2}
+.cid{font:600 12px/1 ui-monospace,Consolas,monospace;color:#9aa4b2;padding-top:4px;min-width:20px}
+.body{flex:1;min-width:0}
+.cline{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.cline h3{margin:0;font-size:15px;font-weight:600;letter-spacing:-.005em}
+.pill{font:700 9.5px/1 "Segoe UI",sans-serif;letter-spacing:.09em;color:#fff;background:var(--c);
+ border-radius:4px;padding:4px 6px;white-space:nowrap}
+.exp{margin:6px 0 4px;font-size:12.5px;color:var(--mut)}
+.exp span{text-transform:uppercase;font-size:10px;letter-spacing:.09em;color:#9aa4b2;margin-right:6px}
+.ev{margin:0;font-size:13.5px}
+.ev a{font-weight:600}
+.meta{margin-top:8px;display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#8a95a3;text-transform:uppercase;letter-spacing:.05em}
+.meta .own{color:#4a5666;text-transform:none;letter-spacing:0}
+.find{margin-top:9px;border-top:1px dashed var(--line);padding-top:7px}
+.find summary{cursor:pointer;font-size:12px;font-weight:600;color:#c62828}
+.ctl.warn .find summary{color:#b26a00}
+.find ul{margin:8px 0 0;padding-left:16px}
+.find li{font-size:12.5px;margin-bottom:3px}
+.find li a{font-weight:700;font-family:ui-monospace,Consolas,monospace}
+.ft{background:#eef2f7;border-radius:3px;padding:1px 5px;font-size:10px;color:#5b6776;margin-right:4px}
+.find em{display:block;color:var(--mut);font-style:normal;font-size:11.5px}
+.act{display:inline-block;margin-left:7px;font-size:10.5px;background:#eaf1ff;color:#1a4fa0;border-radius:3px;padding:1px 6px;white-space:nowrap}
+.move{margin:9px 0 0;font-size:13px;background:#f6f9fe;border-left:3px solid var(--blue);padding:8px 11px;border-radius:0 6px 6px 0}
+.move span{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:3px}
+.qtable td.mv{font-size:12.5px;line-height:1.45}
+.qtable .own{font-size:10.5px;color:#8a95a3;margin-top:4px;text-transform:none}
+.qtable td.n{text-align:center;font-weight:600;font-variant-numeric:tabular-nums;color:#3c4654}
+.qtable th:nth-child(1){width:76px} .qtable th:nth-child(2){width:34px}
+.qtable th:nth-child(3){width:252px} .qtable th:nth-child(5){width:56px}
+.more{color:var(--mut);font-size:11.5px;list-style:none;margin-left:-16px}
+.qtable{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+.qtable th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);
+ background:#f0f3f7;padding:9px 12px;font-weight:600}
+.qtable td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+.qtable .q{font-family:ui-monospace,Consolas,monospace;color:#8a95a3}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--c);margin-right:6px}
+.clean{background:#eaf7ee;border:1px solid #bfe3ca;color:#0b6b3a;border-radius:9px;padding:12px 14px}
+footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:#8a95a3;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:23px}.right{width:100%}}
+@media print{body{background:#fff}header.top{-webkit-print-color-adjust:exact}}
+</style></head>
+<body>
+<header class="top"><div class="wrap">
+  <div>
+    <div class="eyebrow">QT34 · PMO board audit · AFusion</div>
+    <h1>Sprint 7 — 58% of controls met</h1>
+    <div class="sub"><b>96</b> open of <b>129</b> items in sprint ·
+      2026-10-26 → 2026-11-06 ·
+      audited <b>2026-10-27</b> · <code>AFusion\Projects Development\Sprint 7</code></div>
+  </div>
+  <div class="right">
+    <div class="trend"><span>Trend · 1 run(s) recorded</span><svg class="spark" viewBox="0 0 260 46" preserveAspectRatio="none"><rect x="2" y="19" width="256" height="8" rx="4" fill="rgba(255,255,255,.16)"/><rect x="2" y="19" width="149.2" height="8" rx="4" fill="#ff7b72"/><text x="2" y="13" font-size="10" fill="#9dbcd9">baseline · first run</text></svg></div>
+    <svg viewBox="0 0 132 132" class="ring" width="132" height="132"><circle cx="66" cy="66" r="54" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="11"/><circle cx="66" cy="66" r="54" fill="none" stroke="#c62828" stroke-width="11" stroke-linecap="round" stroke-dasharray="197.8 339.3" transform="rotate(-90 66 66)"/><text x="66" y="63" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">58%</text><text x="66" y="82" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9.5" letter-spacing=".08em">CONTROLS MET</text></svg>
+  </div>
+</div></header>
+<div class="wrap">
+  <div class="kpis"><div class="kpi"><b style="color:#c62828">9</b><span>Gaps</span></div><div class="kpi"><b style="color:#b26a00">2</b><span>At risk</span></div><div class="kpi"><b style="color:#1a73e8">3</b><span>Attest</span></div><div class="kpi"><b style="color:#5f6368">3</b><span>Pending</span></div><div class="kpi"><b style="color:#0f9d58">13</b><span>Passed</span></div></div>
+  <nav class="nav"><a class="chip" href="#a0">Project &amp; Team</a><a class="chip" href="#a1">Backlog / Requirements<span>2</span></a><a class="chip" href="#a2">Sprint / Work Planning<span>1</span></a><a class="chip" href="#a3">Sprint Execution &amp; Tracking<span>4</span></a><a class="chip" href="#a4">Quality &amp; Traceability<span>2</span></a><a class="chip" href="#a5">Sprint Review &amp; Improvement</a></nav>
+  <section>
+    <header class="sech"><h2>Suggested moves</h2>
+      <span class="sectag">11 control(s) need action this sprint · owner per row</span></header>
+    <table class="qtable"><thead><tr><th>Status</th><th>#</th><th>Control</th><th>Suggested move</th><th>Items</th></tr></thead><tbody><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">05</td><td>Work items contain sufficient detail.</td><td class="mv">Fill System.Description on the listed items — what is requested plus the expected output. QC tasks should name the test case and the expected result.<div class="own">Owner: SM / Dev</div></td><td class="n">31</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">08</td><td>Large work is decomposed when needed.</td><td class="mv">Decompose the listed Epics/Features into child PBIs/tasks — or close them if the work was superseded.<div class="own">Owner: PO / SM</div></td><td class="n">5</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">15</td><td>Effort/points are recorded where estimation is applicable.</td><td class="mv">Estimate the listed items at the next refinement (Effort in hours) — do not start unestimated work.<div class="own">Owner: PO / SM</div></td><td class="n">7</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">16</td><td>Active work items have a responsible owner.</td><td class="mv">Assign every open item to an accountable owner; unassigned work cannot be followed up.<div class="own">Owner: SM</div></td><td class="n">1</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">17</td><td>Work-item status reflects actual progress.</td><td class="mv">Close the parents whose children are all Done, and re-open any parent that was closed with work still open.<div class="own">Owner: SM / Dev</div></td><td class="n">11</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">18</td><td>Effort/remaining work is updated where used.</td><td class="mv">Set Remaining Work on the listed In-Progress tasks and update it daily — this is what feeds the burndown.<div class="own">Owner: Dev</div></td><td class="n">3</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">22</td><td>Progress can be monitored from project data.</td><td class="mv">Fix the state and Remaining Work defects (controls 17 and 18) first — the board view is only as good as those two fields.<div class="own">Owner: SM</div></td><td class="n">—</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">23</td><td>Commits are linked to the related work item where code is produced.</td><td class="mv">Link the commit(s) to each listed Done item (Add link → Commit), or note why no code change was needed.<div class="own">Owner: Dev</div></td><td class="n">6</td></tr><tr><td><span class="dot" style="--c:#c62828"></span>GAP</td><td class="q">24</td><td>Pull Requests are linked and reviewed where code is produced.</td><td class="mv">Link the PR to each listed Done item and confirm the review approval before merge.<div class="own">Owner: Dev</div></td><td class="n">5</td></tr><tr><td><span class="dot" style="--c:#b26a00"></span>AT RISK</td><td class="q">07</td><td>Backlog priority/order reflects current business priority.</td><td class="mv">Set Backlog Priority on the listed items so the sprint order is defensible at review.<div class="own">Owner: PO</div></td><td class="n">1</td></tr><tr><td><span class="dot" style="--c:#b26a00"></span>AT RISK</td><td class="q">09</td><td>Requirement changes are reflected in the backlog.</td><td class="mv">SM to confirm which post-start items are genuine requirement changes; record the change and re-estimate on the parent PBI rather than adding silent scope.<div class="own">Owner: SM</div></td><td class="n">13</td></tr></tbody></table>
+  </section>
+  
+    <section id="a0">
+      <header class="sech"><h2>1. Project &amp; Team</h2>
+        <span class="sectag">0 gap(s) · 0 at risk</span></header>
+      
+        <article class="ctl pass">
+          <div class="cid">01</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Project workspace is available and current.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> A current project workspace exists in the approved project management tool.</p>
+            <p class="ev">Azure DevOps project <b>AFusion</b> reachable; sprint <b>Sprint 7</b> (2026-10-26 → 2026-11-06) resolved from team settings. 129 work items in scope.</p>
+            
+            <div class="meta">
+              <span>Required</span><span>Monthly</span>
+              <span>QT34 §6.2.1</span><span class="own">Owner: PMO</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">02</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Project member list is current.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Member list includes name, role, join date, leave date (if any), and notes when needed.</p>
+            <p class="ev"><a href="https://devops.imt-soft.com/Inheritance/AFusion/_wiki/wikis/AFusion-Rpa.wiki?pagePath=%2FProject%20Members">Project Members wiki page</a> present; 15 identities in the AFusion Team group.</p>
+            
+            <div class="meta">
+              <span>Required</span><span>Monthly</span>
+              <span>QT34 §6.3</span><span class="own">Owner: PMO / SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl review">
+          <div class="cid">03</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#1a73e8" title="Not machine-verifiable — SM/PO sign-off required">ATTEST</span>
+              <h3>Access is aligned with project roles and personnel changes.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Access is granted by role and reviewed/removed when membership changes.</p>
+            <p class="ev">15 team members; capacity configured for 11 (Development 6, Testing 4, Requirements 1). Role-to-access mapping is an attestation, not machine-verifiable.</p>
+            <p class="move"><span>Suggested move</span>Run the monthly access review in Project Settings → Teams: remove leavers and confirm each role matches the capacity activity recorded for that person.</p>
+            <div class="meta">
+              <span>Required</span><span>Monthly</span>
+              <span>QT34 §6.2.1; §6.3</span><span class="own">Owner: PMO</span>
+            </div>
+            
+          </div>
+        </article>
+    </section>
+    <section id="a1">
+      <header class="sech"><h2>2. Backlog / Requirements</h2>
+        <span class="sectag">2 gap(s) · 2 at risk</span></header>
+      
+        <article class="ctl review">
+          <div class="cid">04</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#1a73e8" title="Not machine-verifiable — SM/PO sign-off required">ATTEST</span>
+              <h3>Work requests/requirements are recorded in the backlog.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Current known work is visible in the project management tool.</p>
+            <p class="ev">96 open items in the sprint, 12 open PBIs/Bugs. Completeness against every incoming request can only be confirmed by the PO/SM.</p>
+            <p class="move"><span>Suggested move</span>PO/SM to confirm every incoming request exists as a PBI before work starts; raise anything missing as a new PBI in this sprint so the backlog matches reality.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.2</span><span class="own">Owner: PO / SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">05</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Work items contain sufficient detail.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Each item clearly states the requested work and expected output.</p>
+            <p class="ev">65/96 open items carry a usable description. 31 blank or stub.</p>
+            <p class="move"><span>Suggested move</span>Fill System.Description on the listed items — what is requested plus the expected output. QC tasks should name the test case and the expected result.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.2; §6.2.5</span><span class="own">Owner: SM / Dev</span>
+            </div>
+            <details class="find"><summary>31 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/56163" target="_blank">#56163</a> <span class="ft">Task</span> [QC] Update Test Case For Individual Report Generation <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/57094" target="_blank">#57094</a> <span class="ft">Task</span> [QC] Sync Tracker PO Oversea <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/57095" target="_blank">#57095</a> <span class="ft">Task</span> [QC] Check download and extract invoice then push to queue for PO Oversea <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58390" target="_blank">#58390</a> <span class="ft">Task</span> [QC] Update Test Case For Cleaning Report Generation <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58391" target="_blank">#58391</a> <span class="ft">Task</span> [QC] Update User Guide For Cleaning Report Generation <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58397" target="_blank">#58397</a> <span class="ft">Task</span> [QC] Check post invoice to Xero <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58398" target="_blank">#58398</a> <span class="ft">Task</span> [QC] Check send mail Processing and Posting <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58882" target="_blank">#58882</a> <span class="ft">Task</span> [Vistra VN] WF4 Write PRD <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59121" target="_blank">#59121</a> <span class="ft">Task</span> [QC] Write test cases for AP Process <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59122" target="_blank">#59122</a> <span class="ft">Task</span> [QC] Write PRD for AP Process <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59123" target="_blank">#59123</a> <span class="ft">Task</span> [QC] Write UAT Plan for AP Process <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59124" target="_blank">#59124</a> <span class="ft">Task</span> [QC] Write User Guide for AP Process <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60261" target="_blank">#60261</a> <span class="ft">Task</span> Speed up processing for emails with multiple orders <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60704" target="_blank">#60704</a> <span class="ft">Task</span> [HC]Check result after booking from 12/2025-10/2026 <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60708" target="_blank">#60708</a> <span class="ft">Task</span> [WF3] Fix issue 84,86,87 <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60709" target="_blank">#60709</a> <span class="ft">Task</span> [WF3] Fix issue 88,89,90 <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60712" target="_blank">#60712</a> <span class="ft">Task</span> Support search by column <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60713" target="_blank">#60713</a> <span class="ft">Task</span> [Purchase Order] Add API to Retrieve Column Settings <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60714" target="_blank">#60714</a> <span class="ft">Task</span> [Highland] Support Booking Based on Existing Excel Data <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60715" target="_blank">#60715</a> <span class="ft">Task</span> Investigate and Fix HTTP 504 Error When Downloading Invoices from hoadondientu <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60760" target="_blank">#60760</a> <span class="ft">Task</span> Vendor Portal manual checking issue resolving <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60934" target="_blank">#60934</a> <span class="ft">Task</span> [HC][GB] Attention notification for all workflows <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60936" target="_blank">#60936</a> <span class="ft">Task</span> Rounding Differences: Auto rounding amounts up or down to the nearest $0.05 <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60937" target="_blank">#60937</a> <span class="ft">Task</span> Incorrect Dates: Highlight any invoice with a date that falls outside the current month or curr… <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60949" target="_blank">#60949</a> <span class="ft">Task</span> [KBE] [QC] Check summary the October data: Total number of jobs. Number of jobs with the correc… <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60968" target="_blank">#60968</a> <span class="ft">Task</span> [QC] Re-check logic identify period <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60969" target="_blank">#60969</a> <span class="ft">Task</span> [QC] Re-check generate report and distribute <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60972" target="_blank">#60972</a> <span class="ft">Task</span> Add column &quot;Assign to customer&quot; for invidual line item <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60974" target="_blank">#60974</a> <span class="ft">Task</span> [WF1] Check issue logs from customers 27/10/2026 <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60989" target="_blank">#60989</a> <span class="ft">Task</span> [HC][GB] Update tax portal list invoice downloading API param and adjust the invoice range with… <span class="act">Add description</span><em>Description empty or under 20 characters</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60994" target="_blank">#60994</a> <span class="ft">Task</span> [QC] Review and Update Keywords in Master Data <span class="act">Add description</span><em>Description empty or under 20 characters</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">06</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Acceptance criteria are defined where required.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Acceptance conditions are clear at the appropriate work-item/task level.</p>
+            <p class="ev">AC present on 14/14 open PBI/Bug/Feature/Epic. Task and Defect carry no AC field on this process.</p>
+            
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.2</span><span class="own">Owner: PO / SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl warn">
+          <div class="cid">07</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#b26a00" title="Partly met — needs attention this sprint">AT RISK</span>
+              <h3>Backlog priority/order reflects current business priority.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> The next work to be performed can be identified from the backlog/order.</p>
+            <p class="ev">Backlog Priority populated on 11/12 open PBIs/Bugs (92%).</p>
+            <p class="move"><span>Suggested move</span>Set Backlog Priority on the listed items so the sprint order is defensible at review.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.2</span><span class="own">Owner: PO</span>
+            </div>
+            <details class="find"><summary>1 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60993" target="_blank">#60993</a> <span class="ft">Product Backlog Item</span> UAT Feedback <span class="act">Set Backlog Priority</span><em>Backlog Priority not set</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">08</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Large work is decomposed when needed.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Large requirements are broken into manageable work items/tasks.</p>
+            <p class="ev">32/37 open Epics/Features have child items.</p>
+            <p class="move"><span>Suggested move</span>Decompose the listed Epics/Features into child PBIs/tasks — or close them if the work was superseded.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.2</span><span class="own">Owner: PO / SM</span>
+            </div>
+            <details class="find"><summary>5 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/30551" target="_blank">#30551</a> <span class="ft">Feature</span> Universal Process Management <span class="act">Decompose</span><em>Epic/Feature has no child work items</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/30552" target="_blank">#30552</a> <span class="ft">Feature</span> Process Management <span class="act">Decompose</span><em>Epic/Feature has no child work items</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/55523" target="_blank">#55523</a> <span class="ft">Epic</span> GainMax <span class="act">Decompose</span><em>Epic/Feature has no child work items</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/56701" target="_blank">#56701</a> <span class="ft">Feature</span> Non-PO Process <span class="act">Decompose</span><em>Epic/Feature has no child work items</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59698" target="_blank">#59698</a> <span class="ft">Feature</span> AI Insight <span class="act">Decompose</span><em>Epic/Feature has no child work items</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl warn">
+          <div class="cid">09</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#b26a00" title="Partly met — needs attention this sprint">AT RISK</span>
+              <h3>Requirement changes are reflected in the backlog.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Material scope/output/priority changes are updated in the related work item.</p>
+            <p class="ev">13 open items (0 effort-h) were created after the sprint started 2026-10-26. Scope additions are expected to be reflected in the backlog; whether each one is a requirement change needs SM confirmation.</p>
+            <p class="move"><span>Suggested move</span>SM to confirm which post-start items are genuine requirement changes; record the change and re-estimate on the parent PBI rather than adding silent scope.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.2</span><span class="own">Owner: SM</span>
+            </div>
+            <details class="find"><summary>13 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60949" target="_blank">#60949</a> <span class="ft">Task</span> [KBE] [QC] Check summary the October data: Total number of jobs. Number of jobs with the correc… <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60968" target="_blank">#60968</a> <span class="ft">Task</span> [QC] Re-check logic identify period <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60969" target="_blank">#60969</a> <span class="ft">Task</span> [QC] Re-check generate report and distribute <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60970" target="_blank">#60970</a> <span class="ft">Defect</span> [GB]Booking thiếu vat_amount <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60972" target="_blank">#60972</a> <span class="ft">Task</span> Add column &quot;Assign to customer&quot; for invidual line item <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60973" target="_blank">#60973</a> <span class="ft">Task</span> [GB]Check result vendor portal for Oct Month <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60974" target="_blank">#60974</a> <span class="ft">Task</span> [WF1] Check issue logs from customers 27/10/2026 <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60986" target="_blank">#60986</a> <span class="ft">Task</span> [HC][D365] Fix duplicate invoice number when existing special-character suffixes are already us… <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60987" target="_blank">#60987</a> <span class="ft">Task</span> [HC] Extract Sales Invoices from July to September 2026 <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60988" target="_blank">#60988</a> <span class="ft">Task</span> [HC] Extract Purchase Invoices for Customer-Provided Vendors (YTD 2026) <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60989" target="_blank">#60989</a> <span class="ft">Task</span> [HC][GB] Update tax portal list invoice downloading API param and adjust the invoice range with… <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60993" target="_blank">#60993</a> <span class="ft">Product Backlog Item</span> UAT Feedback <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60994" target="_blank">#60994</a> <span class="ft">Task</span> [QC] Review and Update Keywords in Master Data <span class="act">Confirm requirement change</span><em>Created after sprint start</em></li></ul></details>
+          </div>
+        </article>
+    </section>
+    <section id="a2">
+      <header class="sech"><h2>3. Sprint / Work Planning</h2>
+        <span class="sectag">1 gap(s) · 0 at risk</span></header>
+      
+        <article class="ctl pass">
+          <div class="cid">10</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Current Sprint/iteration or work period is identified where applicable.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Current work period is visible and active items are assigned appropriately.</p>
+            <p class="ev"><b>Sprint 7</b> — <code>AFusion\Projects Development\Sprint 7</code>, 2026-10-26 → 2026-11-06, day 2 of 10.</p>
+            
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.3</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">11</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Sprint goal/objective is understood where Sprint planning is used.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> A clear Sprint objective is recorded or understood by the team.</p>
+            <p class="ev"><a href="https://devops.imt-soft.com/Inheritance/AFusion/_wiki/wikis/AFusion-Rpa.wiki?pagePath=%2FAFusion%2FSprint%20Planning%2FSprint%207">Sprint Planning / Sprint 7</a> present in the wiki.</p>
+            
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.3</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">12</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Team workload/capacity is considered when assigning work.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Availability, leave/training, and current workload are considered.</p>
+            <p class="ev">Capacity configured for 11 people at 88h/day; 8 working day(s) left = 704h. Open Task/Defect/Bug remaining work 303h (43% of remaining capacity).</p>
+            
+            <div class="meta">
+              <span>Required</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.3</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">13</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Planned work is selected/prioritized before execution where applicable.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Sprint backlog or active work queue reflects agreed priorities.</p>
+            <p class="ev">92% of PBIs/Bugs carry a Backlog Priority; 96/96 open items are linked into the hierarchy.</p>
+            
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.3</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">14</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Work is broken into manageable tasks where needed.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Tasks are small enough to track and complete effectively.</p>
+            <p class="ev">12/12 open PBIs/Bugs have child tasks.</p>
+            
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.3</span><span class="own">Owner: Dev / SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">15</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Effort/points are recorded where estimation is applicable.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Applicable work has an agreed estimate before or during planning.</p>
+            <p class="ev">Effort recorded on 7/14 open PBI/Bug/Feature/Epic.</p>
+            <p class="move"><span>Suggested move</span>Estimate the listed items at the next refinement (Effort in hours) — do not start unestimated work.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Weekly</span>
+              <span>QT34 §6.2.2; §6.2.3</span><span class="own">Owner: PO / SM</span>
+            </div>
+            <details class="find"><summary>7 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58439" target="_blank">#58439</a> <span class="ft">Product Backlog Item</span> Create PRD for AP Process <span class="act">Estimate effort</span><em>Effort not set</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58440" target="_blank">#58440</a> <span class="ft">Product Backlog Item</span> Create UAT Plant <span class="act">Estimate effort</span><em>Effort not set</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58441" target="_blank">#58441</a> <span class="ft">Product Backlog Item</span> Create User Guide <span class="act">Estimate effort</span><em>Effort not set</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59698" target="_blank">#59698</a> <span class="ft">Feature</span> AI Insight <span class="act">Estimate effort</span><em>Effort not set</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60386" target="_blank">#60386</a> <span class="ft">Epic</span> Phuc Long <span class="act">Estimate effort</span><em>Effort not set</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60747" target="_blank">#60747</a> <span class="ft">Product Backlog Item</span> Workflow test case building and e2e test running <span class="act">Estimate effort</span><em>Effort not set</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60993" target="_blank">#60993</a> <span class="ft">Product Backlog Item</span> UAT Feedback <span class="act">Estimate effort</span><em>Effort not set</em></li></ul></details>
+          </div>
+        </article>
+    </section>
+    <section id="a3">
+      <header class="sech"><h2>4. Sprint Execution &amp; Tracking</h2>
+        <span class="sectag">4 gap(s) · 0 at risk</span></header>
+      
+        <article class="ctl fail">
+          <div class="cid">16</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Active work items have a responsible owner.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Each active item has an accountable assignee/owner.</p>
+            <p class="ev">95/96 open items assigned.</p>
+            <p class="move"><span>Suggested move</span>Assign every open item to an accountable owner; unassigned work cannot be followed up.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: SM</span>
+            </div>
+            <details class="find"><summary>1 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60993" target="_blank">#60993</a> <span class="ft">Product Backlog Item</span> UAT Feedback <span class="act">Assign owner</span><em>No assignee</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">17</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Work-item status reflects actual progress.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> State/status is current and matches the real work condition.</p>
+            <p class="ev">11 parent(s) lagging their children; 0 parent(s) closed with open children.</p>
+            <p class="move"><span>Suggested move</span>Close the parents whose children are all Done, and re-open any parent that was closed with work still open.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: SM / Dev</span>
+            </div>
+            <details class="find"><summary>11 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/47334" target="_blank">#47334</a> <span class="ft">Product Backlog Item</span> Research &amp; Documentation <span class="act"></span><em>All 3 children are Done — parent still New (iteration Projects Development)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/47307" target="_blank">#47307</a> <span class="ft">Product Backlog Item</span> Merge client report <span class="act"></span><em>All 5 children are Done — parent still Committed (iteration Projects Development)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58198" target="_blank">#58198</a> <span class="ft">Product Backlog Item</span> UI/UX Enhancement <span class="act"></span><em>All 1 children are Done — parent still Committed (iteration Sprint 4)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60386" target="_blank">#60386</a> <span class="ft">Epic</span> Phuc Long <span class="act"></span><em>All 1 children are Done — parent still In Progress (in sprint)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60747" target="_blank">#60747</a> <span class="ft">Product Backlog Item</span> Workflow test case building and e2e test running <span class="act"></span><em>All 2 children are Done — parent still Committed (in sprint)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/46982" target="_blank">#46982</a> <span class="ft">Epic</span> DxR <span class="act"></span><em>All 4 children are Done — parent still In Review (iteration Projects Development)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/47037" target="_blank">#47037</a> <span class="ft">Feature</span> Highlands Coffee <span class="act"></span><em>All 3 children are Done — parent still In Progress (iteration Projects Development)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/52830" target="_blank">#52830</a> <span class="ft">Epic</span> KBE Cleaning <span class="act"></span><em>All 2 children are Done — parent still In Progress (iteration Projects Development)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/53670" target="_blank">#53670</a> <span class="ft">Feature</span> Attendance Workflow <span class="act"></span><em>All 14 children are Done — parent still In Progress (iteration Sprint 3)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/53760" target="_blank">#53760</a> <span class="ft">Feature</span> DxR - Invoice Trainning <span class="act"></span><em>All 1 children are Done — parent still In Progress (iteration Sprint 1)</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/54028" target="_blank">#54028</a> <span class="ft">Feature</span> Hyper Supports <span class="act"></span><em>All 2 children are Done — parent still In Progress (iteration Sprint 4)</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">18</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Effort/remaining work is updated where used.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Tracking fields are current enough to support monitoring/reporting.</p>
+            <p class="ev">3 In-Progress Task/Defect/Bug item(s) have no Remaining Work.</p>
+            <p class="move"><span>Suggested move</span>Set Remaining Work on the listed In-Progress tasks and update it daily — this is what feeds the burndown.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: Dev</span>
+            </div>
+            <details class="find"><summary>3 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60099" target="_blank">#60099</a> <span class="ft">Task</span> [AI Agent Server] Write software &amp; hardware requirements document (PDF) for machines hosting th… <span class="act">Set Remaining Work</span><em>In Progress with empty Remaining Work</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60767" target="_blank">#60767</a> <span class="ft">Task</span> [Vistra VN][Dev] Configure Agent Notification Service for Element on VM <span class="act">Set Remaining Work</span><em>In Progress with empty Remaining Work</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60987" target="_blank">#60987</a> <span class="ft">Task</span> [HC] Extract Sales Invoices from July to September 2026 <span class="act">Set Remaining Work</span><em>In Progress with empty Remaining Work</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">19</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Active tasks/bugs/issues are updated regularly.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Recent updates provide a reliable view of current work and blockers.</p>
+            <p class="ev">0 active item(s) untouched for more than 5 working days.</p>
+            
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: Dev / SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">20</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Bugs/issues are recorded and assigned when applicable.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Relevant bugs/issues have owner, classification/status, and linkage as needed.</p>
+            <p class="ev">22 open Bug/Defect item(s); 0 missing an assignee or Priority.</p>
+            
+            <div class="meta">
+              <span>Conditional</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: QA / SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl review">
+          <div class="cid">21</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#1a73e8" title="Not machine-verifiable — SM/PO sign-off required">ATTEST</span>
+              <h3>Blockers/impediments are visible and followed up.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Material blockers have an owner/action and current status.</p>
+            <p class="ev">No item is flagged Blocked and no Impediment is recorded in this sprint. SM must confirm whether any impediment occurred and how it was tracked.</p>
+            <p class="move"><span>Suggested move</span>Record impediments as Impediment items or tag Blocked with a follow-up owner; SM to confirm none were missed.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.5; §6.2.6</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">22</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Progress can be monitored from project data.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Board/query/report gives a reliable view of workload and progress.</p>
+            <p class="ev">15 data-quality defect(s) affect the board view: 1 unassigned, 3 missing Remaining Work, 11 state mismatches. Sprint progress is computable, but totals drift while these persist.</p>
+            <p class="move"><span>Suggested move</span>Fix the state and Remaining Work defects (controls 17 and 18) first — the board view is only as good as those two fields.</p>
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+    </section>
+    <section id="a4">
+      <header class="sech"><h2>5. Quality &amp; Traceability</h2>
+        <span class="sectag">2 gap(s) · 0 at risk</span></header>
+      
+        <article class="ctl fail">
+          <div class="cid">23</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Commits are linked to the related work item where code is produced.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Sampled code changes can be traced to the correct task/work item.</p>
+            <p class="ev">8/14 Done PBI/Bug/Defect item(s) carry a commit link.</p>
+            <p class="move"><span>Suggested move</span>Link the commit(s) to each listed Done item (Add link → Commit), or note why no code change was needed.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: Dev</span>
+            </div>
+            <details class="find"><summary>6 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58423" target="_blank">#58423</a> <span class="ft">Defect</span> [Mail] Chỉnh mail thống kê vendor portal formal để gửi khách <span class="act">Link the commit</span><em>Done with no commit link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58618" target="_blank">#58618</a> <span class="ft">Defect</span> [Validate] PO Number, Currency chưa validate <span class="act">Link the commit</span><em>Done with no commit link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58708" target="_blank">#58708</a> <span class="ft">Defect</span> [Matching PO] Case: Không có PO đang ghi vào tracker sai <span class="act">Link the commit</span><em>Done with no commit link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59984" target="_blank">#59984</a> <span class="ft">Defect</span> [Classify] Chưa có asset phân loại GRN <span class="act">Link the commit</span><em>Done with no commit link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60269" target="_blank">#60269</a> <span class="ft">Defect</span> [AP Tracker] Lỗi mở file tracker trên GG Drive <span class="act">Link the commit</span><em>Done with no commit link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60622" target="_blank">#60622</a> <span class="ft">Defect</span> [Download tax portal]Không download được invoice INTERNET <span class="act">Link the commit</span><em>Done with no commit link</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl fail">
+          <div class="cid">24</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#c62828" title="Control not met — corrective action required">GAP</span>
+              <h3>Pull Requests are linked and reviewed where code is produced.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Sampled PRs link to work items and show completed code review before merge.</p>
+            <p class="ev">9/14 Done PBI/Bug/Defect item(s) carry a PR link.</p>
+            <p class="move"><span>Suggested move</span>Link the PR to each listed Done item and confirm the review approval before merge.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Weekly</span>
+              <span>QT34 §6.2.5</span><span class="own">Owner: Dev</span>
+            </div>
+            <details class="find"><summary>5 item(s) to fix</summary><ul><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58423" target="_blank">#58423</a> <span class="ft">Defect</span> [Mail] Chỉnh mail thống kê vendor portal formal để gửi khách <span class="act">Link the PR</span><em>Done with no pull request link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/58708" target="_blank">#58708</a> <span class="ft">Defect</span> [Matching PO] Case: Không có PO đang ghi vào tracker sai <span class="act">Link the PR</span><em>Done with no pull request link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/59984" target="_blank">#59984</a> <span class="ft">Defect</span> [Classify] Chưa có asset phân loại GRN <span class="act">Link the PR</span><em>Done with no pull request link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60269" target="_blank">#60269</a> <span class="ft">Defect</span> [AP Tracker] Lỗi mở file tracker trên GG Drive <span class="act">Link the PR</span><em>Done with no pull request link</em></li><li><a href="https://devops.imt-soft.com/Inheritance/AFusion/_workitems/edit/60622" target="_blank">#60622</a> <span class="ft">Defect</span> [Download tax portal]Không download được invoice INTERNET <span class="act">Link the PR</span><em>Done with no pull request link</em></li></ul></details>
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">25</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Completed work meets the agreed Definition of Done/acceptance conditions.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> DONE items have sufficient evidence that acceptance conditions were met.</p>
+            <p class="ev">All Done PBI/Bug/Feature/Epic items carry acceptance criteria.</p>
+            
+            <div class="meta">
+              <span>Required</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.3; §6.2.6</span><span class="own">Owner: SM / QA</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">26</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Sample traceability check passes end-to-end.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> 2–3 completed items can be traced from request/backlog to execution, review/approval, and DONE.</p>
+            <p class="ev">8 Done item(s) are fully traceable (parent + commit + PR) out of 14 Done PBI/Bug/Defect. Sampled: #58563, #58619, #58702</p>
+            
+            <div class="meta">
+              <span>Review Control</span><span>Monthly</span>
+              <span>Derived from QT34 traceability requirements</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+    </section>
+    <section id="a5">
+      <header class="sech"><h2>6. Sprint Review &amp; Improvement</h2>
+        <span class="sectag">0 gap(s) · 0 at risk</span></header>
+      
+        <article class="ctl pending">
+          <div class="cid">27</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#5f6368" title="Not due yet in this sprint">PENDING</span>
+              <h3>Sprint Review/demo or equivalent completion review is performed where applicable.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Completed work is reviewed/demonstrated with relevant stakeholders.</p>
+            <p class="ev">Sprint Review / Sprint 7 not yet recorded — sprint ends 2026-11-06.</p>
+            <p class="move"><span>Suggested move</span>Schedule the sprint review and record the demoed items and stakeholder feedback in the sprint review page.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.6</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pending">
+          <div class="cid">28</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#5f6368" title="Not due yet in this sprint">PENDING</span>
+              <h3>Feedback is captured and reflected in follow-up work.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Review/requester feedback is recorded and creates/updates work items when needed.</p>
+            <p class="ev">No review note for Sprint 7 yet — feedback capture not due before 2026-11-06.</p>
+            <p class="move"><span>Suggested move</span>Capture feedback from the review and raise follow-up PBIs for anything accepted.</p>
+            <div class="meta">
+              <span>Required</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.6</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pass">
+          <div class="cid">29</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#0f9d58" title="Control met on the evidence reviewed">PASS</span>
+              <h3>Backlog is reviewed/reprioritized regularly or when priorities change.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Backlog order remains aligned with the latest agreed business priority.</p>
+            <p class="ev">Backlog Priority coverage 92% on open PBIs/Bugs; 12 PBI/Bug item(s) reprioritised in the last 7 days.</p>
+            
+            <div class="meta">
+              <span>Required</span><span>Weekly</span>
+              <span>QT34 §6.2.2; §6.2.6</span><span class="own">Owner: PO</span>
+            </div>
+            
+          </div>
+        </article>
+        <article class="ctl pending">
+          <div class="cid">30</div>
+          <div class="body">
+            <div class="cline">
+              <span class="pill" style="--c:#5f6368" title="Not due yet in this sprint">PENDING</span>
+              <h3>Retrospective/improvement actions are tracked where applicable.</h3>
+            </div>
+            <p class="exp"><span>Expected</span> Improvement actions/impediments have owner and follow-up status.</p>
+            <p class="ev">No retrospective note for Sprint 7 yet — due at sprint close (2026-11-06).</p>
+            <p class="move"><span>Suggested move</span>Run the retrospective at sprint close and log each action with an owner and due date.</p>
+            <div class="meta">
+              <span>Conditional</span><span>Bi-weekly</span>
+              <span>QT34 §6.2.6</span><span class="own">Owner: SM</span>
+            </div>
+            
+          </div>
+        </article>
+    </section>
+  <footer>
+    <div>Generated by <b>Hermes Board Hygiene</b> · 2026-10-27 11:46 (UTC+7) ·
+      source: ADO_Audit_rules.md (30 controls)</div>
+    <div>Read-only audit — no work item was modified · <a href="archive/">all runs →</a> · next run 09:00.</div>
+  </footer>
+</div></body></html>
