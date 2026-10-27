@@ -1,0 +1,16 @@
+[
+ {
+  "date": "2026-10-27",
+  "sprint": "Sprint 7",
+  "score": 64.6,
+  "counts": {
+   "pass": 15,
+   "review": 3,
+   "fail": 8,
+   "warn": 1,
+   "pending": 3
+  },
+  "items": 126,
+  "open": 96
+ }
+]
