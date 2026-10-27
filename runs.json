@@ -110,5 +110,21 @@
   },
   "items": 129,
   "open": 96
+ },
+ {
+  "run_id": "2026-10-27_1146",
+  "date": "2026-10-27",
+  "time": "11:46",
+  "sprint": "Sprint 7",
+  "score": 58.3,
+  "counts": {
+   "pass": 13,
+   "review": 3,
+   "fail": 9,
+   "warn": 2,
+   "pending": 3
+  },
+  "items": 129,
+  "open": 96
  }
 ]
