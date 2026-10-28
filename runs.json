@@ -221,5 +221,21 @@
   },
   "items": 138,
   "open": 94
+ },
+ {
+  "run_id": "2026-10-28_0902",
+  "date": "2026-10-28",
+  "time": "09:02",
+  "sprint": "Sprint 7",
+  "score": 45.8,
+  "counts": {
+   "pass": 9,
+   "review": 3,
+   "fail": 11,
+   "warn": 4,
+   "pending": 3
+  },
+  "items": 206,
+  "open": 158
  }
 ]
