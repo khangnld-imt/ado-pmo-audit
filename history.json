@@ -15,15 +15,15 @@
  {
   "date": "2026-10-28",
   "sprint": "Sprint 7",
-  "score": 45.8,
+  "score": 58.3,
   "counts": {
-   "pass": 9,
+   "pass": 13,
    "review": 3,
-   "fail": 11,
-   "warn": 4,
+   "fail": 9,
+   "warn": 2,
    "pending": 3
   },
-  "items": 206,
+  "items": 207,
   "open": 158
  }
 ]
