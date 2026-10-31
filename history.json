@@ -52,5 +52,19 @@
   },
   "items": 203,
   "open": 113
+ },
+ {
+  "date": "2026-10-31",
+  "sprint": "Sprint 7",
+  "score": 58.3,
+  "counts": {
+   "pass": 13,
+   "review": 3,
+   "fail": 9,
+   "warn": 2,
+   "pending": 3
+  },
+  "items": 212,
+  "open": 102
  }
 ]
