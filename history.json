@@ -136,5 +136,19 @@
   },
   "items": 291,
   "open": 120
+ },
+ {
+  "date": "2026-11-06",
+  "sprint": "Sprint 7",
+  "score": 70.8,
+  "counts": {
+   "pass": 16,
+   "review": 3,
+   "fail": 6,
+   "warn": 2,
+   "pending": 3
+  },
+  "items": 320,
+  "open": 131
  }
 ]
