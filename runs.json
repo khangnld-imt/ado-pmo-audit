@@ -411,5 +411,21 @@
   },
   "items": 291,
   "open": 120
+ },
+ {
+  "run_id": "2026-11-06_0922",
+  "date": "2026-11-06",
+  "time": "09:22",
+  "sprint": "Sprint 7",
+  "score": 70.8,
+  "counts": {
+   "pass": 16,
+   "review": 3,
+   "fail": 6,
+   "warn": 2,
+   "pending": 3
+  },
+  "items": 320,
+  "open": 131
  }
 ]
